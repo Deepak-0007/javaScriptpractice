@@ -16,3 +16,11 @@ const a1 = {
 a1['friend']="Ajay"
 a1['name']="Harinder"
 console.log(a1)
+ 
+// word meaning 
+
+const dict={
+    hello:"used as a greeting or to begin a phone conversation",
+    bye:"to see off"
+}
+console.log(dict.hello)
