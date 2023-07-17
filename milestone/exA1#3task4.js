@@ -24,20 +24,20 @@
   //}
   
 //   let n = 3;
-// let output = "";
 // for (let i = 1; i <= n; i++) {
-//   output += "X" + i;
-//   if (i < n) {
-//     output += " ";
-//   }
-// }
-// console.log(output);
-
-let n = 3;
-let output = "";
-for (let i = 1; i <= n; i++) {
-  output += "A" + i + "B" + i;
-    output += " ";
+//   console.log("X" + i);
   
+// }
+
+
+// let n = 3;
+// for (let i = 1; i <= n; i++) {
+//   console.log("A" + i + "B" + i);
+  
+  
+//  }
+
+n = 4;
+for (i = 1; i <= n; i++) {
+    console.log(i*i);
 }
-console.log(output);
