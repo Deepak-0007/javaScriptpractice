@@ -79,22 +79,22 @@
 // // console.log(count);
 
 // //task11
- let str='#98#bQ';
- let newstr="";
- for(let i=0; i<str.length;i++){
-     let char=Sstr[i];
-     if(char>='A' && char<='Z'){
-         newstr+='A';
-     }
-     else if(char>='a' && char<='z'){
-         newstr+='a';
-     }else if(char >='0' && char<='9'){
-         newstr +=0;
-     }else{
-         newstr +=char;
-     }
- }
- console.log(newstr);
+//  let str='#98#bQ';
+//  let newstr="";
+//  for(let i=0; i<str.length;i++){
+//      let char=Sstr[i];
+//      if(char>='A' && char<='Z'){
+//          newstr+='A';
+//      }
+//      else if(char>='a' && char<='z'){
+//          newstr+='a';
+//      }else if(char >='0' && char<='9'){
+//          newstr +=0;
+//      }else{
+//          newstr +=char;
+//      }
+//  }
+//  console.log(newstr);
 
 // //task12
 // // let str = "9#a$M%2eP";
@@ -174,3 +174,86 @@
 // }
 
 // console.log(lastHalf);
+
+
+
+//task 28
+// let str="AB CD";
+// let searchstr="ABCD";
+// let pos=0;
+// let r=0;
+// for(;;){
+//     let index=str.indexOf(searchstr,pos);
+//     if(index >=0){
+//         r++;
+//         pos=index+1;
+//     }else{
+//         break;
+//     }
+// }
+// console.log(r);
+
+//task 29
+//Given a string str, replace ABCD with XYZ
+// var str = "ABCD JS";
+// var newStr = "";
+
+// for (var i = 0; i < str.length; i++) {
+//  if( str[i]=="A"){
+//     newStr +="X";
+//  }
+//  else if(str[i]=="B"){
+//     newStr += "Y";
+//  } 
+//  else if(str[i]=="C"){
+//     newStr += "Z";
+
+//  }
+//  else if(str[i]=="D"){
+//     newStr=newStr
+//  }
+//  else{
+//     newStr=newStr+str[i];
+//  }
+// }
+// console.log(newStr);
+
+// var str = "ABCD JS";
+// var newStr = "";
+
+// for (var i = 0; i < str.length; i++) {
+//  if( str[i]=="A"||str[i+1]=="B"||str[i+2]=="C"||str[i+3]=="D"){
+//     newStr +="XYZ";
+//  }
+//  else{
+//     newStr=newStr+str[i];
+//  }
+// }
+// console.log(newStr);
+
+// var str = "ABCD JS";
+// var newStr = "";
+
+// for (var i = 0; i < str.length; i++) {
+//  if( str[i]=="A"||str[i+1]=="B"||str[i+2]=="C"||str[i+3]=="D"){
+//     newStr +="XYZ";
+//  }
+//  else{
+//     newStr=newStr+str[i];
+//  }
+// }
+// console.log(newStr);
+
+var str = "AB ABC ABCD ABCD ABC AB";
+var newStr = "";
+
+for (var i = 0; i < str.length; i++) {
+  if (str[i] == "A" && str[i + 1] == "B" && str[i + 2] == "C" && str[i + 3] == "D") {
+    newStr += "XYZ";
+    i += 3; 
+  } else {
+    newStr += str[i];
+  }
+}
+
+console.log(newStr);
