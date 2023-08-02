@@ -1,0 +1,34 @@
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: x-large;
+}
+th,
+td {
+  padding: 5px;
+  text-align: center;
+}
+.body {
+  background-color: blue;
+}
+.outer {
+  margin-left: 33%;
+  margin-top: 50px;
+}
+tr:nth-child(even) {
+  background-color: #52a8a8;
+}
+
+tr:nth-child(odd) {
+  background-color: #8ffcb7;
+  color: white;
+}
+td {
+  display: flex;
+  justify-content: space-between;
+}
+th {
+  background-color: rgb(19, 193, 103);
+}

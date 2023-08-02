@@ -1,0 +1,23 @@
+.navbar ul li {
+  list-style: none;
+  display: inline;
+  padding: 10px;
+  font-size: larger;
+}
+.navbar {
+  margin-left: -50px;
+}
+a:hover {
+  color: red;
+}
+body {
+  color: blue;
+  margin-left: 50px;
+}
+img {
+  float: left;
+  margin-right: 20px;
+}
+p {
+  font-size: x-large;
+}
