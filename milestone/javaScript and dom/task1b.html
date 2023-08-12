@@ -1,0 +1,33 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>Persons Data</h2>
+        <div id='data'></div>
+        <button onclick="show(0)">jack</button>
+        <button onclick="show(1)">Bob</button>
+        <button onclick="show(2)">Mary</button>
+        <button onclick="clearData()">clear</button>
+
+        <Script>
+            let Persons=[
+                {name:'jack',email:'jack@gmail.com',mobile:'9800111'},
+                {name:'Bob',email:'Bob@gmail.com',mobile:'90987'},
+                {name:'Mary',email:'mary@gmail.com',mobile:'8280777'},
+            ];
+            function show(index){
+                let Person=Persons[index];
+                let element=document.getElementById('data');
+                let str='<h3>'+Person.name+'<h3>';
+                    str+='<h3>'+Person.email+'<h3>';
+                    str+='<h3>'+Person.mobile+'<h3>';
+                    console.log(str);
+                    element.innerHTML=str;
+            }
+            function clearData(){
+                let element=document.getElementById('data');
+                element.innerHTML='';
+            }
+        </Script>
+    </body>
+</html>

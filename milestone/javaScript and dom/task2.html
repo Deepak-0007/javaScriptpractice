@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <style>
+            table{
+                border-collapse: collapse;
+                width: 50%;
+                border: 3px solid black;
+            }
+                th, td{
+                    border: 2px solid black;
+                    text-align: center;
+                    font-weight: bold;               
+                }
+            th{
+                color: white;
+                background-color: rgb(138, 138, 245);
+            }
+            .addbtn{
+                background-color:rgb(70, 243, 70) ;
+                text-align: center;
+                cursor: pointer;
+                color:black;
+                font-weight: bold;
+            }
+            .rbtn{
+                background-color: pink;
+                text-align: center;
+                cursor: pointer;
+                color:black;
+                font-weight: bold;
+            }
+
+        </style>
+    </head>
+    <body>
+        <table>
+            <h2>List of Products</h2>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th> </th>
+            </tr>
+            <tr>
+                <td>pepsi</td>
+                <td>15</td>
+                <td>20</td>
+                <td><button class="addbtn">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Coke</td>
+                <td>18</td>
+                <td>30</td>
+                <td><button class="addbtn">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Maggi</td>
+                <td>10</td>
+                <td>35</td>
+                <td><button class="addbtn">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Nescafe</td>
+                <td>40</td>
+                <td>10</td>
+                <td><button class="addbtn">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Dairy Milk</td>
+                <td>30</td>
+                <td>12</td>
+                <td><button class="addbtn">Add to Cart</button></td>
+            </tr>
+            <tr>
+                <td>Frito Lays</td>
+                <td>20</td>
+                <td>15</td>
+                <td><button class="addbtn">Add to Cart</button></td>
+            </tr>
+        </table>
+        <h2>My Cart</h2>
+        <h3>Number of items 8 Bill Amount: 132</h3>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th> </th>
+                </tr>
+                <tr>
+                    
+                    <td>pepsi</td>
+                    <td>4</td>
+                    <td>15</td>
+                    <td>60</td>
+                    <td><button class="rbtn">Remove From Cart</button></td>
+                </tr>
+                <td>Coke</td>
+                    <td>4</td>
+                    <td>18</td>
+                    <td>72</td>
+                    <td><button class="rbtn">Remove From Cart</button></td>
+                </tr>
+        </table>
+    </body>
+</html>

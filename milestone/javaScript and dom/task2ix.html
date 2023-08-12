@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People List</title>
+</head>
+
+<body>
+    <h2>List of People</h2>
+    <div id="output"></div>
+    <button onclick="showPeople()">Show</button>
+    <button onclick="hidePeople()">Hide</button>
+    <button onclick="sortByName()">Sort by Name</button>
+    <button onclick="sortByCountry()">Sort by Country</button>
+    <button onclick="sortByAge()">Sort by Age</button>
+    <button onclick="sortByCountryName()">Sort by Country & Name</button>
+    <button onclick="sortByCountryAge()">Sort by Country & Age</button><br>
+    <button onclick="filterByCountry('India')">India</button>
+    <button onclick="filterByCountry('USA')">USA</button>
+    <button onclick="filterByCountry('France')">France</button><br>
+    <button onclick="styleByCountry()">Style by Country</button>
+    <button onclick="styleByAge()">Style by Age</button>
+
+    <script>
+        const people = [
+            {"name": "Jack", "country": "USA", "age": 35},
+            {"name": "Amit", "country": "India", "age": 38},
+            {"name": "Edward", "country": "USA", "age": 41},
+            // ... (other people data)
+        ];
+
+        let ageStyleEnabled = false;
+        let countrystlyeEnable = false;
+
+        function generateListItems(person) {
+            return "<li style='color: " + getCountryColor(person.country) + ";'>" +
+                   person.name + ", " + person.country + ", " + person.age + "</li>";
+        }
+
+        function showPeople() {
+            let output = document.getElementById("output");
+            let listItems = people.map(generateListItems);
+            output.innerHTML = "<ul>" + listItems.join("") + "</ul>";
+        }
+
+        function hidePeople() {
+            let output = document.getElementById("output");
+            output.innerHTML = "";
+        }
+
+        function sortByName() {
+            people.sort(function(a, b) {
+                return a.name.localeCompare(b.name);
+            });
+            showPeople();
+        }
+
+        function sortByCountry() {
+            people.sort(function(a, b) {
+                return a.country.localeCompare(b.country);
+            });
+            showPeople();
+        }
+
+        function sortByAge() {
+            people.sort(function(a, b) {
+                return a.age - b.age;
+            });
+            showPeople();
+        }
+
+        function sortByCountryName() {
+            people.sort(function(a, b) {
+                // First, sort by country
+                if (a.country < b.country) return -1;
+                if (a.country > b.country) return 1;
+
+                // If the countries are the same, sort by name
+                if (a.name < b.name) return -1;
+                if (a.name > b.name) return 1;
+
+                // If both country and name are the same, maintain the original order
+                return 0;
+            });
+            showPeople();
+        }
+
+        function sortByCountryAge() {
+            people.sort(function(a, b) {
+                // First, sort by country
+                if (a.country < b.country) return -1;
+                if (a.country > b.country) return 1;
+
+                // If the countries are the same, sort by Age
+                if (a.age < b.age) return -1;
+                if (a.age > b.age) return 1;
+
+                return 0;
+            });
+            showPeople();
+        }
+
+        function filterByCountry(country) {
+            let filteredArray = people.filter(function(person) {
+                return person.country === country;
+            });
+            showPeopleWithArray(filteredArray);
+        }
+
+        function showPeopleWithArray(arrayToShow) {
+            let output = document.getElementById("output");
+            let listItems = arrayToShow.map(generateListItems);
+            output.innerHTML = "<ul>" + listItems.join("") + "</ul>";
+        }
+
+        function getCountryColor(country) {
+            if (country === "India" && countrystlyeEnable) {
+                return "blue";
+            } else if (country === "USA" && countrystlyeEnable) {
+                return "green";
+            } else if (country === "France" && countrystlyeEnable) {
+                return "red";
+            } else {
+                return "black"; // Default color for other countries
+            }
+        }
+
+        function styleByCountry() {
+            countrystlyeEnable = true;
+            ageStyleEnabled = false;
+            showPeople();
+        }
+
+        function styleByAge() {
+            ageStyleEnabled = true;
+            countrystlyeEnable = false;
+            showPeople();
+        }
+
+    </script>
+</body>
+
+</html>

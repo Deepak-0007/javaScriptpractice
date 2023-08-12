@@ -1,0 +1,42 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2> list of Names</h2>
+        <div id='listNames'></div>
+        <button onclick ='showNames()'>show Names</button>
+        <button onclick ='hideNames()'>Hide Names</button>
+        <button onclick='sortAsc()'>Ascending Order</button>
+        <button onclick= 'sortDesc()'>Descending Order</button>
+        <script>
+            const names=['Steven Price','Anna Matthews','Tim Davids','Julia Burton','Mary james','ed johnsson'];
+            function showNames(){
+            const namesMap=names.map(function(name){
+                return '<li>'+name+'</li>';
+            });
+            let str='<ul>'+namesMap.join('')+'</ul>';
+            let element=document.getElementById('listNames')
+            element.innerHTML=str;        
+            }
+            function hideNames(){
+                let element=document.getElementById('listNames');
+                element.innerHTML='';
+            }
+            function sortAsc(){
+                names.sort(sortNamesAsc);
+                showNames();
+            }
+            function sortNamesAsc(name1,name2){
+            return name1.localeCompare(name2);
+            }
+            function sortDesc(){
+                names.sort(sortNamesDesc);
+                showNames();
+            }
+            function sortNamesDesc(name1,name2){
+                return -1*name1.localeCompare(name2);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link rel='stylesheet' href='mystyles.css'>
+    </head>
+    <body>
+        <h3 id="name" class="showBlue">Seller :Jack Smith</h3>
+        <h3 id="email" class="showBlue">jack@email.com</h3>
+        <h3 id="mobile" class="showBlue">Mobile: 3456789</h3>
+        <button onclick="changeNameStyle()">Change Name Style</button>
+        <button onclick="changeStyleall()">All Green</button>
+        <button onclick="clearStyle()">Clear Style</button>
+        <script>
+            const ids=['name','email','mobile'];
+            function changeNameStyle(){
+
+            let element =document.getElementById('name');
+            element.className='showGreen';
+            }
+            function changeStyleall(){
+                for(let i=0;i<ids.length;i++){
+                    let element=document.getElementById(ids[i]);
+                    element.className='showGreen';
+                }
+            }
+            function clearStyle(){
+                for(let i=0;i<ids.length;i++){
+                    let element=document.getElementById(ids[i]);
+                    element.className='';
+                }
+            }
+        </script>
+    </body>
+</html>
