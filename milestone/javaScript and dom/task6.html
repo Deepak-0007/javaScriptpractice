@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+         .h1 {
+      border: 2px solid black;
+      padding: 10px;
+    }
+    .sp1 {
+      margin-left: 10px;
+    }
+    .pink {
+      background-color: lightpink;
+    }
+    .green {
+      background-color: lightgreen;
+    }
+    .blue {
+      background-color: lightskyblue;
+    }
+    .button {
+      background-color: gray;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin: 10px 5px; 
+       }
+    
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Quiz</h1>
+    <div id="showdata"></div>
+    <script>
+      let array = [
+        { name: "Einstein", score: 0 },
+        { name: "Newton", score: 0 },
+        { name: "Edison", score: 0 },
+      ];
+
+      showfn();
+
+      function showfn() {
+        let s1 = showoriginal();
+        let element = document.getElementById("showdata");
+        element.innerHTML = s1;
+      }
+
+      function showoriginal() {
+        let rmap = array.map(function (n) {
+          let str = '<h1 class="' + getscorecolor(n.score) + '">';
+          str += '<span class="sp1">' + n.name + "</span>";
+          str +=
+            '<span class="sp1 ' +
+            getscorecolor(n.score) +
+            '">' +
+            n.score +
+            "</span>";
+            str += '<button class="button" onclick="increaseScore(\'' + n.name + '\')">+2</button>';
+            str += '<button class="button" onclick="decreaseScore(\'' + n.name + '\')">-1</button>';
+
+          return str;
+        });
+        return rmap.join("");
+      }
+
+      function increaseScore(name) {
+        let person = array.find(function (n) {
+          return n.name === name;
+        });
+        if (person) {
+          person.score += 2;
+        }
+        showfn();
+      }
+
+      function decreaseScore(name) {
+        let person = array.find(function (n) {
+          return n.name === name;
+        });
+        if (person) {
+          person.score -= 1;
+        }
+        showfn();
+      }
+
+      function getscorecolor(score) {
+        if (score === 0) {
+          return "blue";
+        } else if (score < 0) {
+          return "pink";
+        } else if (score > 0) {
+          return "green";
+        }
+      }
+    </script>
+  </body>
+</html>

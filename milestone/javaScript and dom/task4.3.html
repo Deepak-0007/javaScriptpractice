@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .background-blue {
+        background-color: blue;
+      }
+      .background-red {
+        background-color: red;
+      }
+      .background-green {
+        background-color: green;
+      }
+      .background-black {
+        background-color: black;
+      }
+      .td1 {
+        border: 1px solid black;
+        padding: 5px;
+      }
+
+      .table1 {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      .th1 {
+        cursor: pointer;
+        border: 1px solid black;
+        padding: 5px;
+      }
+
+      .age-green {
+        background-color: lightgreen;
+      }
+
+      .age-red {
+        background-color: lightcoral;
+      }
+
+      .age-blue {
+        background-color: lightskyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="showList"></div>
+    <button onclick="styleByCountry()">Style By Country</button>
+    <button onclick="styleByAge()">Style By Age</button>
+
+    <script>
+      let countrystyleEnable = false;
+      let ageStyleEnable = false;
+      let array = [
+        { name: "Jack", country: "USA", age: 35 },
+        { name: "Amit", country: "India", age: 38 },
+        { name: "Edward", country: "USA", age: 41 },
+        { name: "Vishal", country: "India", age: 30 },
+        { name: "Annie", country: "USA", age: 27 },
+        { name: "Nick", country: "France", age: 32 },
+        { name: "Francis", country: "France", age: 44 },
+        { name: "Preeti", country: "India", age: 25 },
+        { name: "Sophie", country: "France", age: 29 },
+        { name: "Harpreet", country: "India", age: 48 },
+        { name: "Bob", country: "USA", age: 21 },
+      ];
+
+      function showfn() {
+        let arr = array.map(function (n, index) {
+          return (
+            '<tr class="' +
+            getCountryClass(n) +
+            '">' +
+            '<td class="td1">' +
+            n.name +
+            "</td>" +
+            '<td class="td1">' +
+            n.country +
+            "</td>" +
+            '<td class="td1 ' +
+            getAgeClass(n.age) +
+            '">' +
+            "<span>" +
+            n.age +
+            "</span>" +
+            "</td>" +
+            '<td class="td1"><button onclick="removePerson(' + index + ')">Remove</button></td>' +
+            "</tr>"
+          );
+        });
+        let header = "<tr>";
+        header += '<th class="th1" onclick="sort(0)">Name &#x2195;</th>';
+        header += '<th class="th1" onclick="sort(1)">Country &#x2195;</th>';
+        header += '<th class="th1" onclick="sort(2)">Age &#x2195;</th>';
+        header += '<th class="th1">Actions</th>';
+        header += "</tr>";
+        let element = document.getElementById("showList");
+        element.innerHTML =
+          '<table class="table1">' + header + arr.join("") + "</table>";
+      }
+
+      function getCountryClass(n) {
+        if (n.country === "India" && countrystyleEnable) {
+          return "background-blue";
+        } else if (n.country === "USA" && countrystyleEnable) {
+          return "background-green";
+        } else if (n.country === "France" && countrystyleEnable) {
+          return "background-red";
+        }
+      }
+
+      function getAgeClass(age) {
+        if (age <= 30 && ageStyleEnable) {
+          return "age-green";
+        } else if (age > 30 && age <= 40 && ageStyleEnable) {
+          return "age-red";
+        } else if (age > 40 && ageStyleEnable) {
+          return "age-blue";
+        }
+      }
+
+      function styleByCountry() {
+        countrystyleEnable = true;
+        ageStyleEnable = false;
+        showfn();
+      }
+
+      function styleByAge() {
+        ageStyleEnable = true;
+        countrystyleEnable = false;
+        showfn();
+      }
+
+      function sort(colNO) {
+        if (colNO === 0) {
+          array.sort(sortName);
+        } else if (colNO === 1) {
+          array.sort(sortCountry);
+        } else if (colNO === 2) {
+          array.sort(sortAge);
+        }
+        showfn();
+      }
+
+      function sortName(a, b) {
+        let nameA = a.name.toUpperCase();
+        let nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      }
+
+      function sortCountry(a, b) {
+        let countryA = a.country.toUpperCase();
+        let countryB = b.country.toUpperCase();
+        if (countryA < countryB) {
+          return -1;
+        }
+        if (countryA > countryB) {
+          return 1;
+        }
+        return 0;
+      }
+
+      function sortAge(a, b) {
+        return a.age - b.age;
+      }
+
+      function removePerson(index) {
+        array.splice(index, 1);
+        showfn();
+      }
+
+      showfn();
+    </script>
+  </body>
+</html>
