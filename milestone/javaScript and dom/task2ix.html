@@ -25,10 +25,17 @@
 
     <script>
         const people = [
-            {"name": "Jack", "country": "USA", "age": 35},
+        {"name": "Jack", "country": "USA", "age": 35},
             {"name": "Amit", "country": "India", "age": 38},
             {"name": "Edward", "country": "USA", "age": 41},
-            // ... (other people data)
+            {"name": "Vishal", "country": "India", "age": 30},
+            {"name": "Annie", "country": "USA", "age": 27},
+            {"name": "Nick", "country": "France", "age": 32},
+            {"name": "Francis", "country": "France", "age": 44},
+            {"name": "Preeti", "country": "India", "age": 25},
+            {"name": "Sophie", "country": "France", "age": 29},
+            {"name": "Harpreet", "country": "India", "age": 48},
+            {"name": "Bob", "country": "USA", "age": 21}
         ];
 
         let ageStyleEnabled = false;
@@ -115,6 +122,7 @@
             output.innerHTML = "<ul>" + listItems.join("") + "</ul>";
         }
 
+
         function getCountryColor(country) {
             if (country === "India" && countrystlyeEnable) {
                 return "blue";
@@ -126,6 +134,16 @@
                 return "black"; // Default color for other countries
             }
         }
+        function getAgeColor(age) {
+            if (age <= 30) {
+                return 'green';
+            } else if (age <= 40) {
+                return 'blue';
+            } else {
+                return 'red';
+            }
+        }
+        
 
         function styleByCountry() {
             countrystlyeEnable = true;
@@ -134,11 +152,12 @@
         }
 
         function styleByAge() {
-            ageStyleEnabled = true;
-            countrystlyeEnable = false;
-            showPeople();
+            let output = document.getElementById("output");
+            let listItems = people.map(person => {
+                return "<li style='color: " + getAgeColor(person.age) + ";'>" + person.name + ", " + person.country + ", " + person.age + "</li>";
+            });
+            output.innerHTML = "<ul>" + listItems.join("") + "</ul>";
         }
-
     </script>
 </body>
 
