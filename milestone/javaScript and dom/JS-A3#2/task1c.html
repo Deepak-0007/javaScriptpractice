@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+  <body>
+    <div id="divdd"></div>
+    <button onclick="showdd()">MakeDD</button>
+    <button onclick="showdata()">Show Data</button>
+    <script>
+      let data = [
+            {name: 'Steve', empId: 'BM222'},
+            {name: 'Gerorge', empId: 'BM405'},
+            {name: 'Marry', empId: 'ET188'},
+            {name: 'Anna', empId: 'AK534'},
+            {name: 'jack', empId: 'CT029'}
+
+      ];
+
+      function showdata() {
+        let dd = document.getElementById("dd1");
+        console.log(dd.value);
+      }
+
+      function showdd() {
+        let div = document.getElementById("divdd");
+        let html = makeoptions(data, "selectedemp", "BM405");
+        div.innerHTML = html;
+      }
+
+      function makeoptions(arr, valontop, selval) {
+        let oparr = arr.map(function (n) {
+          if (n.empId == selval) {
+            return (
+              "<option selected value='" + n.empId + "'>" + n.name + "</option>"
+            );
+          }
+          return "<option value='" + n.empId + "'>" + n.name + "</option>";
+        });
+
+        let topstr = "<option selected disabled>" + valontop + "</option>";
+        let str = "<select id='dd1'>" + topstr + oparr.join("") + "</select>";
+        return str;
+      }
+    </script>
+  </body>
+</html>

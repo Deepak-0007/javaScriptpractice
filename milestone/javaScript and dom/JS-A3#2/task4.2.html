@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS styles */
+        td {
+            border: 1px solid black;
+            padding: 5px; /* Added padding for spacing */
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th {
+            cursor: pointer;
+            border: 1px solid black;
+            background-color: black;
+            color: white;
+            padding: 5px; /* Added padding for spacing */
+        }
+        .red {
+            background-color: red;
+        }
+        .gray {
+            background-color: gray;
+        }
+        .green {
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        New weight between:
+        <input type="number" id="minweight" placeholder="Enter min Weight" value="">
+        <input type="number" id="maxweight" placeholder="Enter max weight" value="">
+        <button onclick="filter()">Filter</button>
+        <button onclick="showAddForm()">Add New Member</button>
+    </div>
+    <div id="table"></div>
+    <div id="addForm" style="display: none;">
+        <h3>Add New Member</h3>
+        <form>
+            <label for="newName">Name:</label>
+            <input type="text" id="newName" required><br>
+            <label for="oldWeight">Old Weight:</label>
+            <select id="oldWeight">
+                <option value="" disabled selected>Select Old Weight</option>
+            </select><br>
+            <label for="newWeight">New Weight:</label>
+            <select id="newWeight">
+                <option value="" disabled selected>Select New Weight</option>
+            </select><br>
+            <button type="button" onclick="addNewMember()">Add Member</button>
+        </form>
+    </div>
+    <script>
+        let array = [
+            { name: "jack", oldweight: 65, newweight: 68 },
+            { name: "Mary", oldweight: 68, newweight: 65 },
+            { name: "Bob", oldweight: 66, newweight: 70 },
+            { name: "Steve", oldweight: 55, newweight: 75 },
+            { name: "james", oldweight: 62, newweight: 71 },
+            { name: "sonny", oldweight: 64, newweight: 74 },
+        ];
+
+        // Variables to store filter values
+        let minWeightFilter = "";
+        let maxWeightFilter = "";
+
+        function getdata(dataArray) {
+            let st = '';
+            st += "<table>";
+            st += "<tr>";
+            st += "<th onclick=\"sort(0)\">Name</th>";
+            st += "<th onclick=\"sort(1)\">Old Weight</th>";
+            st += "<th onclick=\"sort(2)\">New Weight</th>";
+            st += "</tr>";
+
+            let arr = dataArray.map(function (n) {
+                let str = `<tr class='${getColor(n.oldweight, n.newweight)}'>`;
+                str += "<td>" + n.name + "</td>";
+                str += "<td>" + n.oldweight + "</td>";
+                str += "<td>" + n.newweight + "</td>";
+                str += "</tr>";
+                return str;
+            });
+
+            let html = st + arr.join("") + "</table>";
+            document.getElementById("table").innerHTML = html;
+        }
+
+        function sort(colNO) {
+            if (colNO === 0) {
+                array.sort(sortName);
+            } else if (colNO === 1) {
+                array.sort(sortMinWeight);
+            } else if (colNO === 2) {
+                array.sort(sortMaxWeight);
+            }
+            getdata(array);
+        }
+
+        function sortName(a, b) {
+            let nameA = a.name.toUpperCase();
+            let nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            return 0;
+        }
+
+        function sortMinWeight(a, b) {
+            return a.oldweight - b.oldweight;
+        }
+
+        function sortMaxWeight(a, b) {
+            return a.newweight - b.newweight;
+        }
+
+        function getColor(w1, w2) {
+            if (w1 < w2) {
+                return "red";
+            } else if (w1 > w2) {
+                return "green";
+            } else {
+                return "gray";
+            }
+        }
+
+        function filter() {
+            let s1 = document.getElementById("minweight").value;
+            let s2 = document.getElementById("maxweight").value;
+
+            if (s1 === "" || s2 === "") {
+                alert("Please enter both the min and max weights.");
+                return;
+            }
+
+            minWeightFilter = s1;
+            maxWeightFilter = s2;
+
+            let filteredArray = array.filter(function (n) {
+                return s1 <= n.newweight && n.newweight <= s2;
+            });
+
+            getdata(filteredArray);
+        }
+
+        function showAddForm() {
+            let addForm = document.getElementById("addForm");
+            addForm.style.display = "block";
+            populateDropdowns();
+        }
+
+        function populateDropdowns() {
+            let oldWeightDropdown = document.getElementById("oldWeight");
+            let newWeightDropdown = document.getElementById("newWeight");
+
+            for (let i = 40; i <= 100; i++) {
+                let option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                oldWeightDropdown.appendChild(option);
+
+                let newOption = document.createElement("option");
+                newOption.value = i;
+                newOption.text = i;
+                newWeightDropdown.appendChild(newOption);
+            }
+        }
+
+        function addNewMember() {
+            let newName = document.getElementById("newName").value;
+            let oldWeight = parseInt(document.getElementById("oldWeight").value);
+            let newWeight = parseInt(document.getElementById("newWeight").value);
+
+            if (!newName || isNaN(oldWeight) || isNaN(newWeight)) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            array.push({ name: newName, oldweight: oldWeight, newweight: newWeight });
+            getdata(array);
+
+            document.getElementById("newName").value = "";
+            document.getElementById("oldWeight").value = "";
+            document.getElementById("newWeight").value = "";
+
+            let addForm = document.getElementById("addForm");
+            addForm.style.display = "none";
+        }
+
+        // Initial data display
+        getdata(array);
+    </script>
+</body>
+</html>

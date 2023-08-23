@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      td {
+        border: 1px solid black;
+      }
+
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      th {
+        cursor: pointer;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="table"></div>
+    <script>
+      let array = [
+        { name: "jack", age: "28", city: "London", technology: "Android" },
+        { name: "Mary", age: "24", city: "Paris", technology: "React" },
+        { name: "bob", age: "22", city: "Delhi", technology: "Angular" },
+        { name: "Steve", age: "25", city: "NewYork", technology: "Spring" },
+      ];
+      let cities = ["London", "Paris", "Delhi", "NewYork"];
+      let technologies = ["Android", "React", "Angular", "Spring"];
+      function makeCodeDD(id, arr, firstItem, selVal) {
+        const arr1 = arr.map(function (opt) {
+          if (opt === selVal) {
+            return "<option selected>" + opt + "</option>";
+          } else {
+            return "<option>" + opt + "</option>";
+          }
+        });
+        let header = "<option disabled>" + firstItem + "</option>";
+        console.log(firstItem);
+        if (selVal === "") {
+          header = "<option disabled selected>" + firstItem + "</option>";
+        }
+        let s1 =
+          '<select id="' + id + '">' + header + arr1.join("") + "</select>";
+        return s1;
+      }
+
+      function getdata() {
+        let st = 'Name:<input type="text" id="name" ></input><br>';
+        st += 'Age:<input type="text" id="age"></input><br>';
+        st += makeCodeDD("city", cities, "Select city", "");
+        st += makeCodeDD("technology", technologies, "Select technology", "");
+
+        st += '<button onclick="Adddetail()">Add person</button><br>';
+        st += '<button onclick=" RemoveDetail()">Remove person</button><br>';
+
+        st += '<button onclick="managecity()">Manage city</button>';
+        st += '<button onclick="managetechs()">Manage Techs</button><br>';
+        let arr = array.map(function (n) {
+          let str = "<tr>";
+          str += "<td>" + n.name + "</td>";
+          str += "<td>" + n.age + "</td>";
+          str += "<td>" + n.city + "</td>";
+          str += "<td>" + n.technology + "</td>";
+          str += "</tr>";
+          return str;
+        });
+        let str1 = "<tr>";
+        str1 += "<th>Name</th>";
+        str1 += "<th>Age</th>";
+        str1 += "<th>City</th>";
+        str1 += "<th>Technology</th>";
+        str1 += "</tr>";
+        let html = "<table>" + st + str1 + arr.join("") + "</table>";
+        document.getElementById("table").innerHTML = html;
+      }
+      getdata();
+
+      function Adddetail() {
+        let st = {};
+
+        st.name = document.getElementById("name").value;
+        st.age = document.getElementById("age").value;
+        st.city = document.getElementById("city").value;
+        st.technology = document.getElementById("technology").value;
+        if (st.name === "") {
+          alert("Please enter a valid name");
+          return;
+        } else if (st.age === "") {
+          alert("Please enter a valid age");
+          return;
+        } else if (
+          !cities.includes(st.city) ||
+          !technologies.includes(st.technology)
+        ) {
+          alert("Please enter a valid city and technology");
+          return;
+        }
+        let personWithSameName = array.find(
+          (n) => n.name.toLowerCase() === st.name.toLowerCase()
+        );
+
+        if (personWithSameName) {
+          alert("A person with the same name already exists.");
+        } else {
+          array.push(st);
+          getdata();
+        }
+      }
+
+      function managecity() {
+        let c1 = "<h1>List of Cities</h1>";
+        c1 += '<input type="text" id="addcity"></input><br>';
+        c1 += '<button onclick="AddCity()">Add</button><br>';
+
+        let arr = cities.map(function (n) {
+          let str = "<tr>";
+          str += "<td>" + n + "</td>";
+          str +=
+            "<td><button onclick=\"remove('" + n + "')\">Remove</button></td>";
+          str += "</tr>";
+          return str;
+        });
+        let b1 = "<button onclick='getdata()'>Show original form</button>";
+        let html = c1 + "<table>" + arr.join("") + b1 + "</table>";
+        document.getElementById("table").innerHTML = html;
+      }
+
+      function AddCity() {
+            let city = document.getElementById("addcity").value;
+            if (city === "") {
+                alert("Please enter data");
+            } else if (cities.includes(city)) {
+                alert("City already exists");
+            } else {
+                cities.push(city);
+                managecity();
+                document.getElementById("addcity").value = "";
+            }
+        }
+
+      function remove(city) {
+        let index = cities.findIndex(function (n) {
+          return n === city;
+        });
+        cities.splice(index, 1);
+        managecity();
+      }
+
+      function managetechs() {
+        let c1 = "<h1>List of Technologies</h1>";
+        c1 += '<input type="text" id="addtechs"></input><br>';
+        c1 += '<button onclick="Addtechs()">Add</button><br>';
+
+        let arr = technologies.map(function (n) {
+          let str = "<tr>";
+          str += "<td>" + n + "</td>";
+          str +=
+            "<td><button onclick=\"removeTech('" +
+            n +
+            "')\">Remove</button></td>";
+          str += "</tr>";
+          return str;
+        });
+        let b1 = "<button onclick='getdata()'>Show original form</button>";
+        let html = c1 + "<table>" + arr.join("") + b1 + "</table>";
+        document.getElementById("table").innerHTML = html;
+      }
+
+      function Addtechs() {
+            let tech = document.getElementById("addtechs").value;
+            if (tech === "") {
+                alert("Please enter data");
+            } else if (technologies.includes(tech)) {
+                alert("Technology already exists");
+            } else {
+                technologies.push(tech);
+                managetechs();
+                document.getElementById("addtechs").value = "";
+            }
+        }
+
+      function removeTech(tech) {
+        let index = technologies.findIndex(function (n) {
+          return n === tech;
+        });
+        technologies.splice(index, 1);
+        managetechs();
+      }
+      function RemoveDetail() {
+        const personNameToRemove = document.getElementById("name").value;
+        const personIndex = array.findIndex(function (n) {
+          return n.name === personNameToRemove;
+        });
+        if (personIndex === -1) {
+          alert("Person Not found!");
+          return;
+        }
+        array.splice(personIndex, 1);
+        getdata();
+      }
+    </script>
+  </body>
+</html>

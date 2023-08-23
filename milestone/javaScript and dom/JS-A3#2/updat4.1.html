@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS styles */
+        td {
+            border: 1px solid black;
+            padding: 5px; /* Added padding for spacing */
+        }
+
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th {
+            cursor: pointer;
+            border: 1px solid black;
+            background-color: black;
+            color: white;
+            padding: 5px; /* Added padding for spacing */
+        }
+        .red {
+            background-color: red;
+        }
+        .gray {
+            background-color: gray;
+        }
+        .green {
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="table"></div>
+    <script>
+        let array = [
+            { name: "jack", oldweight: 65, newweight: 68 },
+            { name: "Mary", oldweight: 68, newweight: 65 },
+            { name: "Bob", oldweight: 66, newweight: 70 },
+            { name: "Steve", oldweight: 55, newweight: 75 },
+            { name: "james", oldweight: 62, newweight: 71 },
+            { name: "sonny", oldweight: 64, newweight: 74 },
+        ];
+
+        // Variables to store filter values
+        let minWeightFilter = "";
+        let maxWeightFilter = "";
+
+        function getdata(dataArray) {
+            let st = 'New weight between:<input type="number" id="minweight" placeholder="Enter min Weight" value="' + minWeightFilter + '"></input>';
+            st += '<input type="number" id="maxweight" placeholder="Enter max weight" value="' + maxWeightFilter + '"></input><br>';
+            st += "<button onclick=filter()>Filter</button>";
+            let arr = dataArray.map(function (n) {
+                let str = `<tr class='${getColor(n.oldweight, n.newweight)}'>`;
+                str += "<td>" + n.name + "</td>";
+                str += "<td>" + n.oldweight + "</td>";
+                str += "<td>" + n.newweight + "</td>";
+                str += "</tr>";
+                return str;
+            });
+            let str1 = "<tr>";
+            str1 += '<th onclick="sort(0)">Name</th>';
+            str1 += '<th onclick="sort(1)">Old Weight</th>';
+            str1 += '<th onclick="sort(2)">New Weight</th>';
+            str1 += "</tr>";
+            let html = "<table>" + st + str1 + arr.join("") + "</table>";
+            document.getElementById("table").innerHTML = html;
+        }
+
+        function sort(colNO) {
+            if (colNO === 0) {
+                array.sort(sortName);
+            } else if (colNO === 1) {
+                array.sort(sortMinWeight);
+            } else if (colNO === 2) {
+                array.sort(sortMaxWeight);
+            }
+            getdata(array);
+        }
+
+        function sortName(a, b) {
+            let nameA = a.name.toUpperCase();
+            let nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+                return 1;
+            }
+            if (nameA > nameB) {
+                return -1;
+            }
+            return 0;
+        }
+
+        function sortMinWeight(a, b) {
+            return b.oldweight - a.oldweight;
+        }
+
+        function sortMaxWeight(a, b) {
+            return b.newweight - a.newweight;
+        }
+
+        function getColor(w1, w2) {
+            if (w1 < w2) {
+                return "red";
+            } else if (w1 > w2) {
+                return "green";
+            } else return "gray";
+        }
+
+        function filter() {
+            let s1 = document.getElementById("minweight").value;
+            let s2 = document.getElementById("maxweight").value;
+
+            if (s1 === "" || s2 === "") {
+                alert("Please enter both the min and max weights.");
+                return;
+            }
+
+            minWeightFilter = s1;
+            maxWeightFilter = s2;
+
+            let filteredArray = array.filter(function (n) {
+                return s1 <= n.newweight && n.newweight <= s2;
+            });
+
+            getdata(filteredArray);
+        }
+
+        // Initial data display
+        getdata(array);
+    </script>
+</body>
+</html>

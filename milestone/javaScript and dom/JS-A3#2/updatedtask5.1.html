@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    td {
+      border: 1px solid black;
+    }
+
+    table {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th {
+      cursor: pointer;
+      border: 1px solid black;
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="shows()">Show</button> <!-- Moved the button above the table -->
+  <div id="productTable"></div>
+  <script>
+    let productMaster = [
+      {
+        productName: "Smartphone",
+        category: "Electronics",
+        buyPrice: 300,
+        sellingPrice: 400,
+      },
+      {
+        productName: "Laptop",
+        category: "Electronics",
+        buyPrice: 600,
+        sellingPrice: 800,
+      },
+      {
+        productName: "T-Shirt",
+        category: "Fashion",
+        buyPrice: 20,
+        sellingPrice: 30,
+      },
+      {
+        productName: "Jeans",
+        category: "Fashion",
+        buyPrice: 35,
+        sellingPrice: 50,
+      },
+    ];
+
+    function shows() {
+      let s1 = productMasterTable();
+      document.getElementById("productTable").innerHTML = s1;
+    }
+
+    function productMasterTable() {
+      let arr = productMaster.map(function (n) {
+        let str = "<tr>";
+        str += "<td>" + n.productName + "</td>";
+        str += "<td>" + n.category + "</td>";
+        str += "<td>" + n.buyPrice + "</td>";
+        str += "<td>" + n.sellingPrice + "</td>";
+
+        str += "</tr>";
+        return str;
+      });
+      let str1 = "<tr>";
+      str1 += "<th>productName</th>";
+      str1 += '<th>category</th>';
+      str1 += '<th>buyPrice</th>';
+      str1 += '<th>sellingprice</th>';
+      str1 += "</tr>";
+
+      let html = "<table>" + str1 + arr.join("") + "</table>";
+      return html;
+    }
+  </script>
+</body>
+</html>
