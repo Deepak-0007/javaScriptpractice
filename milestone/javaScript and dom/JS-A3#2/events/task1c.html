@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <style>
+            .errMsg{
+                background-color: lightpink;
+            }
+        </style>
+    </head>
+    <body>
+        Text 1:<input type="text" id="txt1" placeholder="Enter the name"
+        onblur="check(this)"><br/>
+        <div id="d1"></div>
+        <button id="btn1">Submit</button>
+        <Script>
+            function check(elem){
+                let txtField=document.getElementById("txt1");
+                let txt=txtField.value;
+                if(txt.length<6){
+                    let errDiv=document.getElementById("d1");
+                    errDiv.innerHTML="name should be 6 char"
+                    errDiv.className="errMsg";
+                    let btn=document.getElementById("btn1");
+                    btn.disabled=true;
+                }
+                else{
+                    let errDiv=document.getElementById("d1");
+                    errDiv.innerHTML=""
+                    errDiv.className="";
+                    let btn=document.getElementById("btn1");
+                    btn.disabled=false;
+                }
+            }
+
+        </Script>
+    </body>
+</html>

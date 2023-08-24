@@ -1,0 +1,38 @@
+<html>
+    <head>
+    </head>
+    <body>
+        Payment Option<br/>
+        <div id="payments"></div>
+        <Script>
+            const paymentsOptions=[
+        {
+          type: "Credit",
+          providers: ["ICICI Bank", "HDFC Bank", "Citi Bank", "SBI", "Amex"],
+        },
+        {
+          type: "Net Banking",
+          providers: ["SBI", "Bol", "HDFC Bank", "Axis Bank", "Kotak Bank"],
+        },
+        {
+          type: "Wallet",
+          providers: ["Paytm", "Google Pay", "Phone Pay", "Amazon Pay"],
+        },
+      ];
+      function makeDDfn(id,data,seletedVal,ValOntop){
+        let dataMap=data.map(function(opt){
+            if(opt=seletedVal)
+             return '<option selected>'+opt+'</option>';
+            else
+             return '<option>'+opt+'</option>';
+            
+        });
+        let first='<option value=\'\' disabled>'+ValOntop+'</option>';
+        if(selectedVal=='')
+         first='<option value=\'\' selected disabled>'+ValOntop+'</option>';
+        let ddHtml='<select id=\''+id+'\'>';
+        ddHtml +=first+dataMap.join('')+'</select>';
+        }
+    </Script>
+    </body>
+</html>
