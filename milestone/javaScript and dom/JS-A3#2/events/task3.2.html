@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TextField Validation</title>
+</head>
+<body>
+  <!-- Input element to enter text -->
+  <input type="text" id="textField" oninput="update()" />
+
+  <script>
+    function update() {
+      // Get the input element
+      let textField = document.getElementById("textField");
+      
+      let inputValue=textField.value;
+      let updatevale="";
+      for(i=0; i<inputValue.length; i++){
+        let char=inputValue[i];
+        if(char!=="b" && char!=="B"){
+            updatevale +=char;
+        }
+      }
+      textField.value = updatevale;
+    }
+  </script>
+</body>
+</html>

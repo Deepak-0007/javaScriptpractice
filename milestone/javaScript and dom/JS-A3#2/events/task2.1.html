@@ -1,0 +1,17 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input type="number" id="it1"/>  + <input type="number" id="it2"/> =
+        <input type="number" id="t3" onmouseover="submit()" />
+        <script>
+            function submit(){
+                let a = +document.getElementById("it1").value;
+                let b = +document.getElementById("it2").value;
+                let c = a+b;
+                document.getElementById("t3").value=c;
+            }
+            submit()
+        </script>
+    </body>
+</html>

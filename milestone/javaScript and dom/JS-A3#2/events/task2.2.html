@@ -1,0 +1,22 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input type="text" id="it1"/>  + <input type="text" id="it2"/> =
+        <input type="text" id="t3" onkeyup="submit()" />
+        <script>
+            function submit(){
+                let a = +document.getElementById("it1").value;
+                let b = +document.getElementById("it2").value;
+                let c = a+b;
+                 if(isNaN(a) || isNaN(b)){
+                    document.getElementById("t3").value="incorrect input";  
+                 }
+                 else{
+                document.getElementById("t3").value=c;
+                 }
+            }
+            submit()
+        </script>
+    </body>
+</html>

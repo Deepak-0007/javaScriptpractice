@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <style>
+            #nme{
+                color: red;
+            }
+            #ge{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        Name:<input type="text" id="name" /><br />
+        <div id="nme"></div>
+        Age:<input type="text" id="age" /><br />
+        <div id="ge"></div>
+        City:<input type="text" id="city" /><br />
+        <div id="cty"></div>
+        Technology:<input type="text" id="tech" /><br />
+        <div id="tnology"></div>
+        <button id="btn" onclick="add()">Add Person</button>
+        <script>
+         let array = [
+          { name: "Jack", age: 28, city: "London", tech: "Android" },
+         { name: "Mary", age: 32, city: "Paris", tech: "React" },
+         { name: "Bob", age: 35, city: "New York", tech: "Angular" },
+         { name: "Steve", age: 26, city: "Delhi", tech: "Spring" },
+         ];
+         function add(){
+            let n1=document.getElementById("name").value;
+            let n2=document.getElementById("nme");
+            let found=false;
+
+            for (let i = 0; i < array.length; i++) {
+             if (n1 === array[i].name) {
+             n2.innerHTML = "Person with the same name exists";
+             found = true;
+             document.getElementById("btn").disabled = true;
+             break;
+              }
+            }
+
+          if (!found) {
+          n2.innerHTML = "";
+           }
+          
+          let a1=document.getElementById("age").value;
+          let a2=document.getElementById("age");
+           if(a1<18){
+            a2.innerHTML="Minimum age is 18";
+            document.getElementById("btn").disabled=true;
+           }else{
+            innerHTML="";
+            document.getElementById("btn").disabled = false;
+           }
+         }
+        </script>
+    </body>
+</html>

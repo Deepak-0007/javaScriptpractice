@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #pname {
+      color: red;
+    }
+    #page {
+      color: red;
+    }
+    #pcity,
+    #ptech {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  Name:<input type="text" id="name" onfocusout="add()" /><br />
+  <div id="pname"></div>
+  Age:<input type="text" id="age" onfocusout="add()" /><br />
+  <div id="page"></div>
+  City:<input type="text" id="city" onfocusout="add()" /><br />
+  <div id="pcity"></div>
+  Technology:<input type="text" id="tech" onfocusout="add()" />
+  <div id="ptech"></div>
+  <button id="btn" onclick="add()">Add person</button>
+  <script>
+    let array = [
+      { name: "Jack", age: 28, city: "London", tech: "Android" },
+      { name: "Mary", age: 32, city: "Paris", tech: "React" },
+      { name: "Bob", age: 35, city: "New York", tech: "Angular" },
+      { name: "Steve", age: 26, city: "Delhi", tech: "Spring" },
+    ];
+
+    function add() {
+      let n1 = document.getElementById("name").value;
+      let ag = parseInt(document.getElementById("age").value); // Convert to integer
+      let c1 = document.getElementById("city").value;
+      let t1 = document.getElementById("tech").value;
+
+      let nn1 = document.getElementById("pname");
+      let nage = document.getElementById("page");
+      let cc1 = document.getElementById("pcity");
+      let tt1 = document.getElementById("ptech");
+      let addButton = document.getElementById("btn"); // Get the button element
+
+      // Reset error messages
+      nn1.innerHTML = "";
+      nage.innerHTML = "";
+      cc1.innerHTML = "";
+      tt1.innerHTML = "";
+
+      // Check if any input box is blank
+      if (n1 === "" || isNaN(ag) || c1 === "" || t1 === "") {
+        addButton.disabled = true;
+        return;
+      }
+
+      // Enable the button if all input fields have values
+      addButton.disabled = false;
+
+      let foundName = array.some(person => person.name === n1);
+      if (foundName) {
+        nn1.innerHTML = "Person with the same name exists";
+        return;
+      }
+
+      if (ag < 18) {
+        nage.innerHTML = "Minimum age should be 18";
+        return;
+      }
+
+      let validCity = array.some(person => person.city.toLowerCase() === c1.toLowerCase());
+      if (!validCity) {
+        cc1.innerHTML = "Enter a city from London, Paris, New York, Delhi";
+        return;
+      }
+
+      let validTech = array.some(person => person.tech.toLowerCase() === t1.toLowerCase());
+      if (!validTech) {
+        tt1.innerHTML = "Enter a technology from Android, React, Angular, Spring";
+        return;
+      }
+
+      // If all validations passed, create a new person object and push it into the array
+      let newPerson = { name: n1, age: ag, city: c1, tech: t1 };
+      array.push(newPerson);
+
+      // Reset input fields
+      document.getElementById("name").value = "";
+      document.getElementById("age").value = "";
+      document.getElementById("city").value = "";
+      document.getElementById("tech").value = "";
+
+      console.log(array);
+    }
+  </script>
+</body>
+</html>
