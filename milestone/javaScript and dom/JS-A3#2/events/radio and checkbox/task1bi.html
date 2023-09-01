@@ -1,0 +1,17 @@
+<html>
+    <body>
+        what do you know
+        <div id="newcb"></div>
+        <script>
+            let cbValues1=["javascript","React","Node"];
+            document.getElementById("newcb").innerHTML=makecheckboxes("xyz",cbValues1)
+            function makecheckboxes(id,arr){
+              const arr1=arr.map(function(val,index){
+                let s1='<input type="checkbox" id="'+id+index+'">'+val+'<br/>';
+                return s1;
+                })
+                return arr1.join('');
+            }
+        </script>
+    </body>
+</html>

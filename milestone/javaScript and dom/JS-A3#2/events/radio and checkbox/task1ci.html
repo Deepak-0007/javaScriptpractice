@@ -1,0 +1,25 @@
+<html>
+    <head></head>
+    <body>
+        what do you know best<br/>
+        <input type="radio" name="tech" value="javaScript" id="r1">javascript<br>
+        <input type="radio" name="tech" value="React" id="r2">React<br>
+        <input type="radio" name="tech" value="Angular"id="r3">Angular<br>
+        <button onclick="showChecked()">show Checked Values</button><br/>
+        <script>
+            function showChecked(){
+                let value='';
+                let r1= document.getElementById("r1");
+                if(r1.checked)
+                 value=r1.value;
+                 let r2= document.getElementById("r2");
+                if(r2.checked)
+                 value=r2.value;
+                 let r3= document.getElementById("r3");
+                if(r3.checked)
+                 value=r3.value;
+                console.log(value);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        what do you know<br/>
+        <input type="checkbox" id="cb1" onchange="changeCb(this)">JavaScript<br>
+        <input type="checkbox" id="cb2"onchange="changeCb(this)">React<br>
+        <input type="checkbox" id= "cb3"onchange="changeCb(this)">Node<br>
+        <button onclick="showChecked()">Show checked value</button>
+        <button onclick="Check(true)">check All</button>
+        <button onclick="unchecked(false)">uncheck</button><br/>
+        <button onclick="Disable(true)">disable</button>
+        <button onclick="Enable(false)">enable</button><br/>
+ 
+        
+        <script>
+           function showChecked(){
+            let cb1=document.getElementById('cb1');
+            let cb2=document.getElementById('cb2');
+            let cb3=document.getElementById('cb3');
+            console.log('cb1',cb1.checked);
+            console.log('cb2',cb2.checked);
+            console.log('cb3',cb3.checked);
+           } 
+           function changeCb(elem){
+            console.log(elem.id,elem.checked,event);
+           }
+           function Check(bool){
+            document.getElementById('cb1').checked=bool;
+            document.getElementById('cb2').checked=bool;
+            document.getElementById('cb3').checked=bool;
+           }
+           
+           function Disable(bool){
+            document.getElementById('cb1').disabled=bool;
+            document.getElementById('cb2').disabled=bool;
+            document.getElementById('cb3').disabled=bool;
+           }
+           function unchecked(bool){
+            document.getElementById('cb1').checked=bool;
+            document.getElementById('cb2').checked=bool;
+            document.getElementById('cb3').checked=bool;
+           }
+           function Enable(bool){
+            document.getElementById('cb1').disabled=bool;
+            document.getElementById('cb2').disabled=bool;
+            document.getElementById('cb3').disabled=bool;
+           }
+        </script>
+    </body>
+    </body>
+</html>

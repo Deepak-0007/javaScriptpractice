@@ -1,0 +1,37 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        what do you know<br/>
+        <input type="checkbox" id="cb1">JavaScript<br>
+        <input type="checkbox" id="cb2">React<br>
+        <input type="checkbox" id= "cb3">Node<br>
+        <button onclick="showChecked()">Show checked value</button>
+        <button onclick="Check()">check All</button>
+        <button onclick="unchecked()">uncheck</button>
+    
+        
+        <script>
+           function showChecked(){
+            let cb1=document.getElementById('cb1');
+            let cb2=document.getElementById('cb2');
+            let cb3=document.getElementById('cb3');
+            console.log('cb1',cb1.checked);
+            console.log('cb2',cb2.checked);
+            console.log('cb3',cb3.checked);
+           } 
+           function Check(){
+            document.getElementById('cb1').checked=true;
+            document.getElementById('cb2').checked=true;
+            document.getElementById('cb3').checked=true;
+           }
+           function unchecked(){
+            document.getElementById('cb1').checked=false;
+            document.getElementById('cb2').checked=false;
+            document.getElementById('cb3').checked=false;
+           }
+        </script>
+    </body>
+    </body>
+</html>

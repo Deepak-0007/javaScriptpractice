@@ -1,0 +1,21 @@
+<html>
+    <body>
+        what do you know
+        <div id="newcb"></div>
+        <script>
+            let cbValues1=[{txt:"javascript",selected:true},
+            {txt:"React",selected:true},{txt:"Node",selected:false}];
+            document.getElementById("newcb").innerHTML=makecheckboxes("xyz",cbValues1)
+            function makecheckboxes(id,arr){
+              const arr1=arr.map(function(val,index){
+                let checkStr='';
+                if(val.selected)
+                    checkStr='checked';
+                let s1='<input type="checkbox"'+checkStr+' id="'+id+index+'">'+val.txt+'<br/>';
+                return s1;
+                });
+                return arr1.join('');
+            }
+        </script>
+    </body>
+</html>
