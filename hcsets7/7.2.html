@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survay Form</title>
+    <style>
+        body{
+    background-color: rgb(67, 67, 241);
+}
+.navbar{
+    color: white;
+    text-align: center;
+    line-height: 10px;
+}
+.navbar p {
+    font-style: italic;
+    font-size: small;
+}
+header{
+    font-size: larger;
+    
+}
+
+h4{
+    color: white;
+    margin-bottom: 5px;
+}
+
+.personal_details input{
+    width: 99%;
+    border-radius: 5px;
+}
+select{
+    width: 99%;
+}
+textarea{
+    width: 99%;
+    height: 100px;
+}
+
+.inputs{
+    margin-left: 70px;
+    margin-right: 70px;
+    background-color: rgb(43, 15, 68);
+    color: white;
+}
+button{
+    width: 100%;
+    background-color: rgb(115, 167, 115);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+    </style>
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+  </head>
+  <body>
+    <nav class="navbar">
+      <header>Sanmple Survey Form</header>
+      <p>Thank you for taking the time to fill the survey</p>
+    </nav>
+
+    <div class="inputs">
+    <div class="personal_details">
+        <br>
+      <h4>Name</h4>
+      <input type="text" placeholder="Enter your name" />
+
+      <h4>Email(optional)</h4>
+      <input type="text" placeholder="Enter your email" />
+
+      <h4>Age(optional)</h4>
+      <input type="text" placeholder="Age" />
+
+      <h4>Which option best describes your current role ?</h4>
+      <select name="/" id="role">
+        <option value=""><S></S>elect current role</option>
+        <option value="2">1</option>
+        <option value="3">2</option>
+        <option value="4">3</option>
+      </select>
+      </div>
+
+      <h4>How would you rate your coding skills</h4>
+      <input type="radio" id="good" name="good" value="good" checked/> <label>Good</label><br />
+      <input type="radio" id="Average" name="avg" value="average" /><label >Average</label><br />
+      <input  type="radio" id="poor"name="poor" value="poor"/><label >Poor</label>
+
+      <h4>What would you like to learn? (Check all that apply)</h4>
+      <input type="checkbox" id="good" name="good" value="good"/> <label>Front-end-Development</label><br />
+      <input type="checkbox" id="good" name="good" value="good"/> <label>Back-end-Development</label><br />
+      <input type="checkbox" id="good" name="good" value="good"/> <label>Full-Stack-Development</label><br />
+      <h4>Any comments or Suggestions?</h4>
+      <textarea id="w3review" placeholder="Enter your comment here"></textarea>
+      <button>Submit</button>
+    </div>
+  </body>
+</html>

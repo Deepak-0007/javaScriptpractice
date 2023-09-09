@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>.sidebar {
+      height: 100%;
+      width: 20%;
+      top: 0;
+      left: 0;
+    
+      /* position: fixed; */
+    }
+    
+    #l1 {
+      list-style: none;
+      font-size: larger;
+      border-bottom: 2px solid black;
+      margin: 10px;
+    }
+    a:link {
+      text-decoration: none;
+      color: black;
+    }
+    .uorderlist {
+      list-style: none;
+    }
+    
+    .right-side {
+      width: 70%;
+      height: 100%;
+      border-left: 1px solid black;
+      padding-left: 40px;
+    }
+    
+    .component {
+      display: flex;
+      flex-direction: row;
+    }
+    h3 {
+      background-color: rgb(190, 183, 183);
+    }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  </head>
+  <body>
+    <div class="component">
+      <div class="sidebar">
+        <h1>JS Documentation</h1>
+        <ul class="uorderlist">
+          <li id="l1"><a href="#section0">Introduction</a></li>
+          <li id="l1"><a href="#section1">Hello World</a></li>
+          <li id="l1"><a href="#section2">Variable</a></li>
+          <li id="l1"><a href="#section3">Declaring Variable</a></li>
+          <li id="l1"><a href="#section4">Variable Scope</a></li>
+          <li id="l1"><a href="#section5">Global Scope</a></li>
+          <li id="l1"><a href="#section6">Data Types</a></li>
+        </ul>
+      </div>
+      <div class="right-side">
+        <h1 id="section0">Introduction</h1>
+        <p>
+          JavaScript (js) is a light-weight object-oriented programming language
+          which is used by several websites for scripting the webpages. It is an
+          interpreted, full-fledged programming language that enables dynamic
+          interactivity on websites when applied to an HTML document.
+        </p>
+        <ul>
+          <li>
+            All popular web browsers support JavaScript as they provide built-in
+            execution environments.
+          </li>
+          <li>
+            JavaScript follows the syntax and structure of the C programming
+            language. Thus, it is a structured programming language.
+          </li>
+        </ul>
+        <h1 id="section1">Hello Word</h1>
+        <p>
+          A "Hello, World!" is a simple program that prints Hello, World! on the
+          screen. Since it's a very simple program, this program is often used
+          to introduce a new programming language to beginners.
+        </p>
+        <h3>function msg(){ alert("Hello JavaScript"); }</h3>
+        <h1 id="section2">Variable</h1>
+        <p>
+          A JavaScript variable is simply a name of storage location. There are
+          two types of variables in JavaScript : local variable and global
+          variable. There are some rules while declaring a JavaScript variable
+          (also known as identifiers). Name must start with a letter (a to z or
+          A to Z), underscore( _ ), or dollar( $ ) sign. After first letter we
+          can use digits (0 to 9), for example value1. JavaScript variables are
+          case sensitive, for example x and X are different variables.
+        </p>
+        <h1 id="section3">Decraring variable</h1>
+        <p>
+          A JavaScript local variable is declared inside block or function. It
+          is accessible within the function or block only. For example:
+        </p>
+        <p>function abc(){ var x=10;//local variable }</p>
+        <p>
+          A JavaScript global variable is accessible from any function. A
+          variable i.e. declared outside the function or declared with window
+          object is known as global variable. For example:
+        </p>
+        <p>
+          var data=200;//gloabal variable function a(){ document.writeln(data);
+          } function b(){ document.writeln(data); } a();//calling JavaScript
+          function b();
+        </p>
+        <h1 id="section4">Variable scope</h1>
+        <p>
+          Block scope: Earlier JavaScript had only Global Scope and Function
+          Scope. let and const are the two new important keywords that were
+          introduced by the ES6 and these two keywords provide Block Scope in
+          JavaScript. ECMAScript (ES6) 2015 was the second major revision to
+          JavaScript. Variables that are declared inside a { } block cannot be
+          accessed from outside the block.
+        </p>
+        <h1 id="section5">Global variable</h1>
+        <p>
+          A JavaScript global variable is declared outside the function or
+          declared with window object. It can be accessed from any function.
+        </p>
+        <h1 id="section6">Data type</h1>
+        <p>
+          JavaScript provides different data types to hold different types of
+          values. There are two types of data types in JavaScript. Primitive
+          data type Non-primitive (reference) data type JavaScript is a dynamic
+          type language, means you don't need to specify type of the variable
+          because it is dynamically used by JavaScript engine. You need to use
+          var here to specify the data type. It can hold any type of values such
+          as numbers, strings etc. For example:
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
