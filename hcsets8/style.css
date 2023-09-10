@@ -1,0 +1,81 @@
+.upper_section{
+    background-color: rgb(14, 121, 14);
+}
+body{
+    color: white;
+}
+.mobil{
+    color: white;
+}
+button{
+    padding: 15px;
+    border: 4px solid;
+    border-color: rgb(235, 158, 170);
+    margin-bottom: 30px;
+    color: white;
+    border-radius: 10px;
+    background-color:rgb(14, 121, 14) ;
+}
+.btn{
+    text-align: center;
+}
+
+.footer_section{
+    background-color: rgb(14, 121, 14);
+}
+
+.middle_section{
+    color: black;
+    
+    
+}
+
+h3{
+    color: rgb(223, 135, 148);
+}
+.card{
+    height: 200px;
+    width: 200x;
+    display: inline-block;
+    margin: 20px;
+    
+}
+.middle_section{
+    height:500px
+}
+
+ul{
+    list-style: none;
+   
+    margin-top: 22px;
+    float: right;
+    margin-right: -180px;
+    
+
+}
+ul li{
+    display: inline-block;
+    margin-left: 20px;
+}
+.left_part{
+    margin-bottom: 100px;
+    margin-top: -50px;
+}
+
+.date{
+    float: right; 
+    color: rgb(202, 133, 144);
+    font: 500;
+    font-weight: bold;
+    margin-right: 30px;
+}
+.mobil{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+img{
+    height: 230px;
+    width: 300px;
+    margin-top: 30px;
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery form</title>
+    <style>
+        /* ... (previous styles) ... */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-box {
+            background-color: white;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            padding-top: 20px;
+            background-color: lightgreen;
+            border-radius: 10px 10px 0 0;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background-color: rgb(66, 179, 216);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width:20%;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+        }
+
+     
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .input-container label {
+            flex: 1;
+            white-space: nowrap;
+        }
+
+        .input-container input[type="radio"],
+        .input-container input[type="checkbox"] {
+            flex: 0;
+            margin-right: 5px;
+        }
+
+        /* ... (previous styles) ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Food Delivery Survey Form</h1>
+        <div class="form-box">
+            <h2 style="text-align: center;">Tell us about Yourself</h2>
+            <div class="input-container">
+                <label for="name">Name :</label>
+                <input type="text" name="name" id="name" placeholder="Enter Your Name">
+            </div>
+            <div class="input-container">
+                <label for="email">Email :</label>
+                <input type="text" name="email" id="email" placeholder="Enter Your Email Address">
+            </div>
+            <div class="input-container">
+                <label for="occupation">What do You :</label>
+                <select name="occupation" id="occupation">
+                    <option value="Student">Student</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="time">Preferred Time :</label>
+                <input type="radio" name="time" id="morning" value="Morning">
+                <label for="morning">Morning</label>
+                <br>
+                <input type="radio" name="time" id="afternoon" value="Afternoon">
+                <label for="afternoon">Afternoon</label>
+                <br>
+                <input type="radio" name="time" id="evening" value="Evening">
+                <label for="evening">Evening</label>
+            </div>
+            <div class="input-container">
+                <label for="meals">Which meals do you Order online? <br>(Select all options that apply)</label>
+                <input type="checkbox" name="meals" id="breakfast" value="Breakfast">
+                <label for="breakfast">Breakfast</label>
+                <br>
+                <input type="checkbox" name="meals" id="lunch" value="Lunch">
+                <label for="lunch">Lunch</label>
+                <br>
+                <input type="checkbox" name="meals" id="dinner" value="Dinner">
+                <label for="dinner">Dinner</label>
+            </div>
+
+            <label for="experience">Anything You Would like to Share</label>
+            <textarea name="experience" id="experience" cols="20" rows="5" placeholder="Enter your experience here"></textarea><br>
+
+            <button>Submit</button>
+        </div>
+    </div>
+</body>
+</html>
