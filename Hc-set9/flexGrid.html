@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Grid Example</title>
+  <style>
+    /* Custom CSS for column background color */
+    .custom-column {
+      background-color: #f0f0f0; /* Replace with your desired background color */
+      padding: 10px; 
+    }
+
+    /* Flex Grid Container */
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; 
+      background-color: #ccc; 
+    }
+
+    /* Flex Grid Item */
+    .flex-item {
+      width: calc(33.33% - 20px); 
+      margin: 10px; 
+      background-color: #fff; 
+    }
+
+    /* Media query to adjust flex item width for smaller screens */
+    @media screen and (max-width: 768px) {
+      .flex-item {
+        width: calc(50% - 20px); */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="flex-container">
+  <!-- Row 1 -->
+  <div class="flex-item custom-column">Column 1</div>
+  <div class="flex-item custom-column">Column 2</div>
+  <div class="flex-item custom-column">Column 3</div>
+  
+
+  <!-- Row 2 -->
+  <div class="flex-item custom-column">Column 1</div>
+  <div class="flex-item custom-column">Column 2</div>
+  <div class="flex-item custom-column">Column 3</div>
+  
+
+  <!-- Row 3 -->
+  <div class="flex-item" style="background-color: yellow;">Column 1</div>
+
+  <div class="flex-item" style="background-color: yellow;">Column 4</div>
+</div>
+<!-- Include Bootstrap JS (Optional, for some features) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
