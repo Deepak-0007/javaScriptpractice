@@ -6,7 +6,7 @@ for(let i=0;i<len;i++){
         count++;
     }
 }
-console.log(count);
+console.log(count);// count length of syring
 
 // double each  other
 let strr='abc'
