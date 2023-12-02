@@ -9,7 +9,7 @@ for(let i=0;i<len;i++){
 console.log(count);// count length of syring
 
 // double each  other
-let strr='abc'
+let strr='abcd'
 let lent=strr.length;
 let newstr='';
 for(let i=0;i<lent;i++){
