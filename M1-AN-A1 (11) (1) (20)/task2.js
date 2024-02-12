@@ -64,7 +64,7 @@ function student(maths, english, computers, science) {
 
 
 // Example usage:
-student(82, 70, 66, 84);
+student(82, 70, 66, 83);
 student(55, 58, 71, 62);
 student(37, 33, 32, 36);
 student(71, 85, 53, 39);
